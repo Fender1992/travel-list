@@ -16,6 +16,10 @@ export default function App() {
     setItems((items) => items.filter((item) => item.id !== id));
   }
 
+  function handleClearList() {
+    setItems([]);
+  }
+
   function handleToggleItem(id) {
     setItems((items) =>
       items.map((item) =>
@@ -64,8 +68,6 @@ function Form({ onAddItems }) {
     <form className="add-form" onSubmit={handleSubmit}>
       <h3>What do you need for your 😍 trip?</h3>
       <select
-        name=""
-        id=""
         value={quantity}
         onChange={(e) => setQuantity(Number(e.target.value))}
       >
@@ -118,9 +120,6 @@ function PackingList({ items, onDeleteItem, onToggleItem, onClearList }) {
           <option value="description">Sort by description</option>
           <option value="packed">Sort by packed status</option>
         </select>
-        <button className="clear-list" onClick={onClearList}>
-          Clear list
-        </button>
       </div>
     </div>
   );
